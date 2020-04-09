@@ -468,6 +468,44 @@ Error(t) = 1 - max(pi)
 * Pre-Pruning
 * Post-Pruning
 
+----------------------------------------------------------------------
+# Naive Bayes
+
+will define these terms:
+prior probability is the probability prior to putting any restriction or filter on the dataset. 
+like if we have an attribute A1 which has values True / False, so prior probability would be how many times A1 is true in the entire dataset / total number of data points in the dataset, we did not consider any other attribute to calculate this probability. 
+So when we consider label attribute to put filters like, how many times is A1 is true when label is true. this is called Likelihood. 
+
+So when using Naive Bayes, this are the two terms we have to calculate from our dataset.
+
+Based on these two calculated values we can calculate the posterior probability using Bayes rule. Conditional independence: Naive Bayes assume that all the attributes in the dataset are independent of each other, hence the name naive for making such an assumption. 
+So finally the formula for calculating posterior probability is. 
+
+Two types of attributes. 
+Catagorical 
+Continuous. 
+
+For continuous value we cannot use the same method we used to calculate likelihood and prior probability of the attribute. 
+
+ 
+Whenever we hear Naive Bayes, we hear the Bayes rule. 
+So lets understand the bayes rule first 
+posterior probability also known as Bayes Theorem
+P(a|b) = P(b|a) * P(a) / P(b)
+
+it tell us how many time a happens given b happens
+So the formula kind of tells us “forwards” when we know “backwards” (or vice versa)
+
+
+Example: If dangerous fires are rare (1%) but smoke is fairly common (10%) due to factories, and 90% of dangerous fires make smoke then:
+P(fire) = 0.01
+P(smoke) = 0.1
+P(smoke|fire) = 0.9
+
+P(Fire|Smoke) = P(smoke|fire)  * p(fire) / p(smoke)
+                = 0.9 * 0.01 = 
+                9 / 100 * 1 / 100
+
 
 ----------------------------------------------------------------------
 # Attribute and Feature Selection
@@ -546,4 +584,6 @@ DEcision Trees
 ### Benefits od Feature Selection
 * fewer features to measure
 * less data to collect
+
+
 * avoids curse of dimensionality
