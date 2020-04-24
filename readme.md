@@ -637,6 +637,10 @@ PCA involves computing Eigenvectors ( In German, it means proper vector)
     2. The next direction of most of the rest of the variation in the data
     3. These form an orithoginal set of basis vectors to descrive data with
 
+> you project your features on to EigenVector, (so you can say that eigenvectors are the ratation vector, meaning they tell you to rotate the data by that much (eigenvector) so that the features are widely spread)
+> It is in the direction of the maximum variation 
+
+
 
 1. **Find the direction of maximum variation of the data**
     1. Take the eigenvectors of the covariance matrix of the data
@@ -656,3 +660,44 @@ M = np.array([0.971, -0.566, -0.566, 0.729]).reshape(2,2)
 
  [-0.566,  0.729]]
  
+
+ # Linear Differentiation Analysis (LDA)
+Given two sets of data, ClassA and ClassB, we can estimate a good projection vector for them using a process calld Linear Discriminant Analysis, or the Fisher Linear Discriminant. 
+
+> It is a formula using Linear Algebra
+
+* To get there, we must make some assumptions, but this is often a good guess at the best projection vector
+
+## PCA vs LDA
+* PCA is unsupervised (we never look at the labels), LDA is supervised
+* PCA trap
+    * as PCA is unsupervised, for n dims it provides n eigenvectors, which one would be the best (try and find out) is known. 
+* as LDA is supervised, it usually tells which projection vector to choose
+
+
+## FLD Classifier
+It is a mathematical formula
+
+`W = SW^-1(m1-m2)`
+
+## Assumptions of FLD
+1. The data is distributed as multi-demensional Gaussian
+2. The covariances of both classes are the same
+3. The data is linearly seperable
+4. Balanced: the Two classes have the same number of sample
+
+## 2 ways to think about FLD
+1. **Correct**, it is a vector, on which the data should be projected on, so that a line can be drawn perpendicular to it that best seperates the data. 
+> Remember, decision boundary and projection vector are orthogonal. 
+
+## FLD is always a vector
+The FLD is the vector that you project the data on to.
+
+* Once you project onto the vector, how many dims do you have for your data? **Only one, this is the key**.
+
+* The Decision boundary though is always perpendicular to the Projection vector is not always a line, 
+in 2 d is a line, in 3 d is plane, N-d Hyperplane
+
+* It tries to maximize an objective function
+    * Minimize within-class (intra-class) scatter
+    * Maximize the between-class (inter-class) scatter
