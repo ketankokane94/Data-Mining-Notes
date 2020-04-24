@@ -1,4 +1,5 @@
 # Stuff from chapter 1 of book:
+    * Scratchpad -- various temporary stuff.
 
 Motivating Challenges:
 
@@ -48,39 +49,7 @@ principles and techniques used in DM are introduced from an algorithmic prespect
 
 Lect 2: 
 
-# Terms:
-* Data Gap: Difference between the amount of data and number of people to analyse the data.
-* Data Lag: Delay in time when the data was generated and when the result was used, (delay is usually due to time required to analyse the data)
-* Telemetry data: Data that comes back from the application (XEROX printer sends error report to XEROX, this error report is called telemetry data)
-* Latent variables: Variables that cannot be observed directly, or vars that are not captured, or the vars that are simply unknown. (Rich kids having asthma due to swimming pool example)
-* outlier: Deviation from the standard data points. (person with 8 ft height is outlier)
-* Anomaly: Error, it should not have happened (negative weight, height) (is not an outlier)
-* Mixture model: identify them as thier probability distributions have seperate peeks. (Crisp, fuzzy)
-* Verbal Judo: Answering even without knowing the answer, by answering something else, basically changing the topic
-* Taxonomy: Structure of things, Nomenclature.
-* Inverse problem : Measuring something and then trying to figure what would have happened, measuring seismic activity and then guessing how many earthquakes.
-* Jitter: added noise to the data, enough to distinguish the data points
-* Deduplication: Removing redundant exact duplicate entries. (add one in lowercase and one in uppercase)
-* Dis-ambiguation: different person having same name (how to tell them apart)
-* Variance: explains the distribution(spread) of the data. The higher the value of Variance, the more dispered the data is. (Sigma)
-* True positive: Fire alarm and smoke detector did go off.
-* False Positive: think False alarams. There wasnt a fire and smoke detector went off (False positive).
-* False Negative: there was a fire but the smoke detector did not go off (Mis).
-* True Negative: No fire and fire alarm did not go off
-* FPR:
-	case	you	caught,	but	did	not	want	do	divided	by	
-the	number	of	cases	you	never		want	to	catch.
-  = FP / FP + TN
-* FNR: False Negative Rate
-	case	you	failed	to	catch	but	wanted	to		
-divided	by	the	number	of	cases	you	could	have	
-caught.	
-* Data Product: DM may result in data product which can be sold.
-* Murphy's law: Whatever could go wrong on a jet engine will go wrong when its running at 50k RPM.
-* Cost function = Objective function + regularization.
-* ROC - x-axis FPR, y-axis TPR
-* Histograms are used in place of probability distributions (because we do not know the actual pd)
-
+# [[Terms]]:
 ## Handling outliers:
 1. Ignoring them
 2. Seperating them into a seperate special dataset
@@ -102,7 +71,7 @@ https://stephens999.github.io/fiveMinuteStats/intro_to_mixture_models.html
 ----------------------------------------------------------------------------
 Lect 3:
 
-# Type of data: (NOIR - a french word which means dark)
+# Type of data: ([[NOIR]] - a french word which means dark)
 ## Categorical:
 1. Nominal - classes, can only distinguish (Asssam, Bhutan)
 2. Ordinal - has an order, can sort, can compare (shirt size)
@@ -261,7 +230,7 @@ TP / (TP + FP)
 --------------------------------------------------------------------------------
 Lecture 11:
 
-#  Distance metrics:
+#  [[Distancemetrics]]:
 want low entropy, Bhattacharya cooefficient should be zero.
 * Common distance metrics
 
@@ -386,15 +355,14 @@ End of Mid term 1
 Used in Artifical Neural Network
 
 4. Measuring chaos -> Measure of impurity in the dataset
+	a. Entropy
+
+	b. Gini Index4. Measuring chaos -> Measure of impurity in the dataset
 a. Entropy
 
 
-b. Gini Index4. Measuring chaos -> Measure of impurity in the dataset
-a. Entropy
-
-
-b. Gini Index4. Measuring chaos -> Measure of impurity in the dataset
-a. Entropy
+	b. Gini Index4. Measuring chaos -> Measure of impurity in the dataset
+	a. Entropy
 
 
 b. Gini Index4. Measuring chaos -> Measure of impurity in the dataset
@@ -472,13 +440,16 @@ Error(t) = 1 - max(pi)
 # Naive Bayes
 
 will define these terms:
-prior probability is the probability prior to putting any restriction or filter on the dataset. 
+* **prior probability** is the probability prior to putting any restriction or filter on the dataset. 
+
 like if we have an attribute A1 which has values True / False, so prior probability would be how many times A1 is true in the entire dataset / total number of data points in the dataset, we did not consider any other attribute to calculate this probability. 
-So when we consider label attribute to put filters like, how many times is A1 is true when label is true. this is called Likelihood. 
+* **Likelihood** So when we consider label attribute to put filters like, how many times is A1 is true when label is true. this is called Likelihood. 
 
-So when using Naive Bayes, this are the two terms we have to calculate from our dataset.
+So when using Naive Bayes, this are the two terms(Prior Probabilty and Likelihood) we have to calculate from our dataset.
 
-Based on these two calculated values we can calculate the posterior probability using Bayes rule. Conditional independence: Naive Bayes assume that all the attributes in the dataset are independent of each other, hence the name naive for making such an assumption. 
+Based on these two calculated values we can calculate the **posterior probability** using Bayes rule. 
+
+* **Conditional independence** : Naive Bayes assume that all the attributes in the dataset are independent of each other, hence the name naive for making such an assumption. 
 So finally the formula for calculating posterior probability is. 
 
 Two types of attributes. 
@@ -488,21 +459,24 @@ Continuous.
 For continuous value we cannot use the same method we used to calculate likelihood and prior probability of the attribute. 
 
  
-Whenever we hear Naive Bayes, we hear the Bayes rule. 
+Whenever we hear Naive Bayes, we hear the **Bayes rule**. 
 So lets understand the bayes rule first 
-posterior probability also known as Bayes Theorem
-P(a|b) = P(b|a) * P(a) / P(b)
+posterior probability also known as 
+Bayes Theorem
+
+`P(a|b) = P(b|a) * P(a) / P(b)`
 
 it tell us how many time a happens given b happens
 So the formula kind of tells us “forwards” when we know “backwards” (or vice versa)
 
 
-Example: If dangerous fires are rare (1%) but smoke is fairly common (10%) due to factories, and 90% of dangerous fires make smoke then:
-P(fire) = 0.01
-P(smoke) = 0.1
-P(smoke|fire) = 0.9
+Example: If dangerous fires are rare (1%) but smoke is fairly common (10%) due to factories, and 90% of dangerous fires make smoke then
 
-P(Fire|Smoke) = P(smoke|fire)  * p(fire) / p(smoke)
+	* P(fire) = 0.01
+	* P(smoke) = 0.1
+	* P(smoke|fire) = 0.9
+
+	* P(Fire|Smoke) = P(smoke|fire) * p(fire) / p(smoke)
                 = 0.9 * 0.01 = 
                 9 / 100 * 1 / 100
 
@@ -587,3 +561,98 @@ DEcision Trees
 
 
 * avoids curse of dimensionality
+
+
+----------------------------------------------------------------------
+
+
+# Principle Component Analysis
+
+## Why PCA:
+1. Data Pre-Processing/data rotation 
+2. Identify most important and least important features
+3. Dim reduction (cannot project back onto all of the Principle components, what does this mean?)
+4. To reveal the shape of the 3D data
+
+
+## Background Math
+
+* Projection onto a vector
+
+    Data = D = [Dx, Dy]
+    V = [Vx, Vy] --> A normalized unit vector
+    
+    Projection amount = V.D
+
+```Python 
+def projection(Vector, Data):
+    print(Vector.shape) # 2 * 3
+    print(Data.shape) # 3 * 4
+    projection_amt = np.dot(Vector, Data)
+    print(projection_amt) # 2 * 3
+
+```
+
+> Projection gives you ONE amount of that vector
+
+## Re-Projection 
+If you multiply the amount of the projection back times the original unit vector, you get a position along the vector in space.
+
+
+## Problems
+* Points which are far from each other, may project to nearly similar points 
+* Two different points can project onto the exact same point
+* When projection, the new points are simplified, **but information is lost**
+
+
+## Who Cares about PCA
+* Projecting onto Fewer Dimensions
+1. We can project data points on random unit vectors and create classifiers which use the projection amounts as features. ( such classifiers are equally good)
+2. Think, projectin a data points with 12 dimension (*shape (1 * 12))* projected on random vector *(shape(1 * 12))* will result in a single value 1 * 1
+3. Can use threshold classifier for classification
+4. This is the advantage of dims reduction
+
+## Instead of projecting on random unit vectors, can we use other non-random unit vectors on which we can project data points?
+**Yes, use PCA and find such non random vectors on which you can project the data**
+
+> so, projection of data on the vector is the technique which results in dim reduction, PCA helps in finding vectors on which the data should be projected for better results
+
+```Python
+def get_rotation_vector(theta):
+    return np.array([math.cos(theta), -math.sin(theta), math.sin(theta), math.cos(theta)]).reshape(2, 2)
+```
+
+* Take a dataset, plot it, rotate the data so the entire data can be explained by just one feature (ideally ) , the problem is to find by how much should the data be rotated. 
+
+## It find the direction of maximum variation of the data given to it
+* It does not know anything about the classes
+* Is not prefect, but helpful
+
+## The Eigenvalues relate to how much variation the associate eigen vector contains
+
+## Eigenvectors
+PCA involves computing Eigenvectors ( In German, it means proper vector)
+* They are the vectors that explain:
+    1. The direction of the most variation in the data
+    2. The next direction of most of the rest of the variation in the data
+    3. These form an orithoginal set of basis vectors to descrive data with
+
+
+1. **Find the direction of maximum variation of the data**
+    1. Take the eigenvectors of the covariance matrix of the data
+    2. Using the relative eigenvalues (normalized), find the eigenvectors that explain 95% of the variance of the data
+
+2. Apply the Karhunen-Loeve Transform
+    1. Substract the mean 
+    2. Use the first eigenvector (the direction of the maximum variance)
+    3. Rotate the data by the angle of the maximum variation so that it is axially aligned
+    
+
+M = np.array([0.971, -0.566, -0.566, 0.729]).reshape(2,2) 
+
+* M is the Covariance matrix
+
+[[ 0.971, -0.566],
+
+ [-0.566,  0.729]]
+ 
